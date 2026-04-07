@@ -122,10 +122,9 @@ class GtfsArchive
                 file_put_contents($temp_file, file_get_contents($url, false, $context));
 
                 /**
-                 * @var array $http_response_header materializes out of thin air unfortunately
                  * Parse the headers so we can retrieve what we need.
                  */
-                $responseHeaders = self::parseHeaders($http_response_header);
+                $responseHeaders = self::parseHeaders(http_get_last_response_headers());
 
                 /** @var integer $statusCode
                  * Track the Status code to determine if the file has changed, or exists.
