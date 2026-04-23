@@ -21,6 +21,7 @@ class GtfsShapesFile
     {
         $this->dataRows = GtfsParserUtil::deserializeCSVWithCompositeIndex($parent, $filePath,
             ShapePoint::class, 'shape_id', 'shape_pt_sequence');
+        ksort($this->dataRows);
         $this->dataRows = array_values($this->dataRows);
     }
 
